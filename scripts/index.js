@@ -8,7 +8,7 @@ const placesList = document.querySelector('.places__list');
 const createCard = (item, removeCard) => {
 	const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
 	cardElement.querySelector('.card__image').src = item.link;
-	cardElement.querySelector('.card__image').alt = "Картинка места";
+	cardElement.querySelector('.card__image').alt = `Фотография места: ${item.name}`;
 	cardElement.querySelector('.card__title').textContent = item.name;
 
 	const deleteButton = cardElement.querySelector('.card__delete-button');
