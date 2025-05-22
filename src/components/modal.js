@@ -1,4 +1,4 @@
-export { openModal, closeModal };
+export { closeModal, openModal };
 
 // Открытие модального окна
 function openModal(popup) {
@@ -14,7 +14,7 @@ function closeModal(popup) {
   document.removeEventListener("keydown", closeByEscape);
 }
 
-// Закрытие модального окна нажатием escape
+// Закрытие модального окна по escape
 function closeByEscape(evt) {
   if (evt.key === "Escape") {
     const popup = document.querySelector(".popup_is-opened");
