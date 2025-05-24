@@ -62,7 +62,9 @@ function resetInputErrors(someForm, settings) {
     hideInputError(someForm, someInput, settings);
   });
 
-  toggleButtonState(inputList, someButton, settings);
+  submitButton.disabled = true;
+  submitButton.classList.add(settings.inactiveButtonClass);
+  
 }
 
 // Функция проверки валидности формы
