@@ -1,5 +1,3 @@
-export { enableValidation, resetInputErrors };
-
 // Функция отображения ошибки
 function showInputError(someForm, someInput, errorMessage, settings) {
   const errorElement = someForm.querySelector(`.${someInput.id}-error`);
@@ -64,8 +62,7 @@ function resetInputErrors(someForm, settings) {
     hideInputError(someForm, someInput, settings);
   });
 
-  submitButton.disabled = true;
-  submitButton.classList.add(settings.inactiveButtonClass);
+  toggleButtonState(inputList, someButton, settings);
 }
 
 // Функция проверки валидности формы
@@ -94,4 +91,6 @@ function enableValidation(settings) {
     setEventListeners(someForm, settings);
   });
 }
+
+export { enableValidation, resetInputErrors };
 

@@ -1,5 +1,3 @@
-export { closeModal, openModal };
-
 // Открытие модального окна
 function openModal(popup) {
   popup.classList.add("popup_is-opened");
@@ -21,3 +19,5 @@ function closeByEscape(evt) {
     closeModal(popup);
   }
 }
+
+export { closeModal, openModal };

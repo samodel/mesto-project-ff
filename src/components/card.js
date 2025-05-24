@@ -1,5 +1,3 @@
-export { createCard };
-
 // Темплейт карточки
 const cardTemplate = document.querySelector("#card-template").content;
 
@@ -48,5 +46,7 @@ function checkIsLiked(cardData, likeButton, userId) {
     likeButton.classList.add("card__like-button_is-active");
   }
 }
+
+export { createCard };
 
 

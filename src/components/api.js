@@ -1,14 +1,3 @@
-export {
-  getProfile,
-  getCards,
-  updateProfile,
-  updateAvatar,
-  addCard,
-  deleteCardFromServer,
-  addLike,
-  removeLike,
-};
-
 // Данные для работы с сервером
 const SERVER_URL = "https://nomoreparties.co/v1/wff-cohort-38";
 const TOKEN = "f9ca6a53-f7e2-4546-bfa9-36d832e0223d";
@@ -116,3 +105,13 @@ const removeLike = (cardId) => {
   })
 };
 
+export {
+  getProfile,
+  getCards,
+  updateProfile,
+  updateAvatar,
+  addCard,
+  deleteCardFromServer,
+  addLike,
+  removeLike,
+};

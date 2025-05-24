@@ -127,13 +127,14 @@ function editProfileForm(evt) {
       profileTitle.textContent = nameEditInput.value;
       profileDescription.textContent = jobEditInput.value;
 
-      evt.submitter.textContent = originalEditSubmitText;
-
       closeModal(popupEditProfile);
     })
     .catch((err) => {
       evt.submitter.textContent = "Ошибка сохранения";
       console.log("Ошибка", err);
+    })
+    .finally(() => {
+      evt.submitter.textContent = originalEditSubmitText;
     });
 }
 
@@ -164,8 +165,6 @@ function confirmDeleteCard(cardId) {
         } else {
           console.log(`Элемент с ID ${cardId} не найден на странице`);
         }
-
-        popupDeleteButton.textContent = originalDeleteButtonText;
         closeModal(popupConfirmDelete);
       } else {
         popupDeleteButton.textContent = "Ошибка удаления";
@@ -174,6 +173,9 @@ function confirmDeleteCard(cardId) {
     })
     .catch((err) => {
       console.log("Ошибка", err);
+    })
+    .finally(() => {
+      popupDeleteButton.textContent = originalDeleteButtonText;
     });
 }
 
@@ -186,6 +188,7 @@ popupDeleteButton.addEventListener('click', function() {
 
 // Добавление новой карточки
 profileAddButton.addEventListener("click", function () {
+  resetInputErrors(formAddNewPlace, configData);
   openModal(popupNewCard);
 });
 
@@ -206,17 +209,21 @@ function addNewCard(evt) {
         userId
       );
 
+      // Устанавливаем идентификатор карточки
+      newCreatedCard.dataset.id = data._id;
+
+
       placesList.prepend(newCreatedCard);
 
       formAddNewPlace.reset();
-      resetInputErrors(formAddNewPlace, configData);
-      evt.submitter.textContent = originalAddButtonText;
-
       closeModal(popupNewCard);
     })
     .catch((err) => {
       evt.submitter.textContent = "Ошибка добавления";
       console.log("Ошибка", err);
+    })
+    .finally(() => {
+      evt.submitter.textContent = originalAddButtonText;
     });
 }
 
@@ -250,16 +257,17 @@ function editAvatar(evt) {
       profileImage.style.backgroundImage = `url(${avatarUrl})`;
 
       formEditAvatar.reset();
-      resetInputErrors(formEditAvatar, configData);
-
-      evt.submitter.textContent = originalEditAvatarButtonText;
-
+      
       closeModal(popupEditAvatar);
     })
     .catch((err) => {
       evt.submitter.textContent = "Ошибка обновления аватара";
       console.log("Ошибка обновления аватара", err);
+    })
+    .finally(() => {
+      evt.submitter.textContent = originalEditAvatarButtonText;
     });
+
 }
 
 formEditAvatar.addEventListener("submit", editAvatar);
